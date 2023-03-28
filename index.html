@@ -1,161 +1,33 @@
+<!DOCTYPE html>
 <html>
 <head>
-<script src="tree.js"></script>
-<style type="text/css">.treejs {
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-  font-size: 14px;
-  -webkit-transition: all 0.3s;
-  -o-transition: all 0.3s;
-  transition: all 0.3s;
-}
-.treejs *:after,
-.treejs *:before {
-  -webkit-transition: all 0.3s;
-  -o-transition: all 0.3s;
-  transition: all 0.3s;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-}
-.treejs > .treejs-node {
-  padding-left: 0;
-}
-.treejs .treejs-nodes {
-  list-style: none;
-  padding-left: 20px;
-  overflow: hidden;
-}
-.treejs .treejs-node {
-  cursor: pointer;
-  overflow: hidden;
-}
-.treejs .treejs-node.treejs-placeholder {
-  padding-left: 20px;
-}
-.treejs .treejs-switcher {
-  display: inline-block;
-  vertical-align: middle;
-  width: 20px;
-  height: 20px;
-  cursor: pointer;
-  position: relative;
-}
-.treejs .treejs-switcher:before {
-  position: absolute;
-  top: 8px;
-  left: 6px;
-  display: block;
-  content: ' ';
-  border: 4px solid transparent;
-  border-top: 4px solid rgba(0, 0, 0, 0.65);
-}
-.treejs .treejs-node__close > .treejs-switcher {
-  -webkit-transform: rotate(-90deg);
-      -ms-transform: rotate(-90deg);
-          transform: rotate(-90deg);
-}
-.treejs .treejs-checkbox {
-  display: inline-block;
-  vertical-align: middle;
-  width: 20px;
-  height: 20px;
-  cursor: pointer;
-  position: relative;
-}
-.treejs .treejs-checkbox:before {
-  cursor: pointer;
-  position: absolute;
-  top: 2px;
-  content: ' ';
-  display: block;
-  width: 16px;
-  height: 16px;
-  border: 1px solid #d9d9d9;
-  border-radius: 2px;
-}
-.treejs .treejs-checkbox:hover:before {
-  -webkit-box-shadow: 0 0 2px 1px #1890ff;
-          box-shadow: 0 0 2px 1px #1890ff;
-}
-.treejs .treejs-node__checked > .treejs-checkbox:before {
-  background-color: #1890ff;
-  border-color: #1890ff;
-}
-.treejs .treejs-node__checked > .treejs-checkbox:after {
-  position: absolute;
-  content: ' ';
-  display: block;
-  top: 4px;
-  left: 5px;
-  width: 5px;
-  height: 9px;
-  border: 2px solid #fff;
-  border-top: none;
-  border-left: none;
-  -webkit-transform: rotate(45deg);
-      -ms-transform: rotate(45deg);
-          transform: rotate(45deg);
-}
-.treejs .treejs-node__halfchecked > .treejs-checkbox:before {
-  background-color: #1890ff;
-  border-color: #1890ff;
-}
-.treejs .treejs-node__halfchecked > .treejs-checkbox:after {
-  position: absolute;
-  content: ' ';
-  display: block;
-  top: 9px;
-  left: 3px;
-  width: 10px;
-  height: 2px;
-  background-color: #fff;
-}
-.treejs .treejs-node__disabled {
-  cursor: not-allowed;
-  color: rgba(0, 0, 0, 0.25);
-}
-.treejs .treejs-node__disabled .treejs-checkbox {
-  cursor: not-allowed;
-}
-.treejs .treejs-node__disabled .treejs-checkbox:before {
-  cursor: not-allowed;
-  border-color: #d9d9d9 !important;
-  background-color: #f5f5f5 !important;
-}
-.treejs .treejs-node__disabled .treejs-checkbox:hover:before {
-  -webkit-box-shadow: none !important;
-          box-shadow: none !important;
-}
-.treejs .treejs-node__disabled .treejs-node__checked > .treejs-checkbox:after {
-  border-color: #d9d9d9;
-}
-.treejs .treejs-node__disabled .treejs-node__halfchecked > .treejs-checkbox:after {
-  background-color: #d9d9d9;
-}
-.treejs .treejs-node__disabled.treejs-node__checked > .treejs-checkbox:after {
-  border-color: #d9d9d9;
-}
-.treejs .treejs-node__disabled.treejs-node__halfchecked > .treejs-checkbox:after {
-  background-color: #d9d9d9;
-}
-</style>
+	<title>LeanIX Factsheet Viewer</title>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
-<div class="container">
-</div>
-<script>
-    // prettier-ignore
-    let data = [{ "id": "0", "text": "node-0", "children": [{ "id": "0-0", "text": "node-0-0", "children": [{ "id": "0-0-0", "text": "node-0-0-0" }, { "id": "0-0-1", "text": "node-0-0-1" }, { "id": "0-0-2", "text": "node-0-0-2" }] }, { "id": "0-1", "text": "node-0-1", "children": [{ "id": "0-1-0", "text": "node-0-1-0" }, { "id": "0-1-1", "text": "node-0-1-1" }, { "id": "0-1-2", "text": "node-0-1-2" }] }, { "id": "0-2", "text": "node-0-2", "children": [{ "id": "0-2-0", "text": "node-0-2-0" }, { "id": "0-2-1", "text": "node-0-2-1" }, { "id": "0-2-2", "text": "node-0-2-2" }] }] }, { "id": "1", "text": "node-1", "children": [{ "id": "1-0", "text": "node-1-0", "children": [{ "id": "1-0-0", "text": "node-1-0-0" }, { "id": "1-0-1", "text": "node-1-0-1" }, { "id": "1-0-2", "text": "node-1-0-2" }] }, { "id": "1-1", "text": "node-1-1", "children": [{ "id": "1-1-0", "text": "node-1-1-0" }, { "id": "1-1-1", "text": "node-1-1-1" }, { "id": "1-1-2", "text": "node-1-1-2" }] }, { "id": "1-2", "text": "node-1-2", "children": [{ "id": "1-2-0", "text": "node-1-2-0" }, { "id": "1-2-1", "text": "node-1-2-1" }, { "id": "1-2-2", "text": "node-1-2-2" }] }] }, { "id": "2", "text": "node-2", "children": [{ "id": "2-0", "text": "node-2-0", "children": [{ "id": "2-0-0", "text": "node-2-0-0" }, { "id": "2-0-1", "text": "node-2-0-1" }, { "id": "2-0-2", "text": "node-2-0-2" }] }, { "id": "2-1", "text": "node-2-1", "children": [{ "id": "2-1-0", "text": "node-2-1-0" }, { "id": "2-1-1", "text": "node-2-1-1" }, { "id": "2-1-2", "text": "node-2-1-2" }] }, { "id": "2-2", "text": "node-2-2", "children": [{ "id": "2-2-0", "text": "node-2-2-0" }, { "id": "2-2-1", "text": "node-2-2-1" }, { "id": "2-2-2", "text": "node-2-2-2" }] }] }]
-
-    let tree = new Tree('.container', {
-        data: [{ id: '-1', text: 'root', children: data }],
-        loaded: function () {
-            this.values = ['0-0-0', '0-1-1'];
-            console.log(this.selectedNodes)
-            console.log(this.values)
-            this.disables = ['0-0-0', '0-0-1', '0-0-2']
-        }
-    })
-</script>
+	<h1>LeanIX Factsheet Viewer</h1>
+	<label for="factSheetId">Enter Factsheet ID:</label>
+	<input type="text" id="factSheetId" name="factSheetId">
+	<button onclick="fetchFactSheet()">Fetch Factsheet</button>
+	<div id="factSheet"></div>
+	<script>
+		function fetchFactSheet() {
+			var factSheetId = document.getElementById("factSheetId").value;
+			var url = "https://heidelbergcement.leanix.net/services/pathfinder/v1/factSheets";
+			$.ajax({
+				url: url,
+				headers: {
+					"Authorization": "Bearer <YOUR_API_TOKEN>"
+				},
+				success: function(data) {
+					
+					document.getElementById("factSheet").innerHTML = data;
+				},
+				error: function(jqXHR, textStatus, errorThrown) {
+					alert("Error fetching factsheet: " + errorThrown);
+				}
+			});
+		}
+	</script>
 </body>
 </html>
